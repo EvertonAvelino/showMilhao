@@ -1,18 +1,20 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'react-native';
 
-import { Container, Titulo, Nome, BotaoSujeito, BotaoText } from './src/styles';
+import Routes from './src/routes/index';
+import AuthProvider from './src/contexts/auth';
+
+console.disableYellowBox = true;
 
 export default function App() {
   return (
-    <Container>
-      <Titulo cor="#FF0000" >Sujeito Programador</Titulo>
-      <Nome>Olá Everton!</Nome>
-
-      <BotaoSujeito onPress={() => alert('CLICOU!')}>
-        <BotaoText>Entrar</BotaoText>
-      </BotaoSujeito>
-
-    </Container>
+    <NavigationContainer>
+      <AuthProvider>
+        <StatusBar backgroundColor="#131313" barStyle="light-content" />
+        <Routes />
+      </AuthProvider>
+    </NavigationContainer>
   );
 }
